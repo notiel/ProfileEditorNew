@@ -1,0 +1,29 @@
+<RCC>
+  <qresource prefix="common">
+    <file>commonhelp.png</file>
+  </qresource>
+  <qresource prefix="auxjp">
+    <file>JapanHelp/HelpAuxJAPAN.png</file>
+  </qresource>
+  <qresource prefix="commonjp">
+    <file>JapanHelp/HelpCommonJAPAN.png</file>
+  </qresource>
+  <qresource prefix="profilesrus">
+    <file>HelpRus/HelpProfilesRus.png</file>
+  </qresource>
+  <qresource prefix="commonrus">
+    <file>HelpRus/HelpCommonRus.png</file>
+  </qresource>
+  <qresource prefix="auxrus">
+    <file>HelpRus/HelpAuxRus.png</file>
+  </qresource>
+  <qresource prefix="profilejp">
+    <file>JapanHelp/HelpProfilesJAPAN.png</file>
+  </qresource>
+  <qresource prefix="aux">
+    <file>AUXHelp2.png</file>
+  </qresource>
+  <qresource prefix="profile">
+    <file>profilesHelp2.png</file>
+  </qresource>
+</RCC>
