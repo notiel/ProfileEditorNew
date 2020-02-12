@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1365</width>
-    <height>775</height>
+    <width>1406</width>
+    <height>802</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,14 +23,14 @@
      <widget class="QTabWidget" name="tabWidget">
       <property name="minimumSize">
        <size>
-        <width>1240</width>
-        <height>87</height>
+        <width>1300</width>
+        <height>700</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>3000</width>
-        <height>16777215</height>
+        <width>1600</width>
+        <height>1000</height>
        </size>
       </property>
       <property name="currentIndex">
@@ -3603,7 +3603,7 @@ Timeout, s:</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1365</width>
+     <width>1406</width>
      <height>26</height>
     </rect>
    </property>

@@ -11,7 +11,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Help(object):
     def setupUi(self, Help):
         Help.setObjectName("Help")
-        Help.resize(1256, 649)
+        Help.resize(1560, 1000)
+        Help.setMinimumSize(QtCore.QSize(1560, 1000))
         self.verticalLayout = QtWidgets.QVBoxLayout(Help)
         self.verticalLayout.setObjectName("verticalLayout")
         self.TxtHelp = QtWidgets.QTextBrowser(Help)

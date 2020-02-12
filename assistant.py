@@ -1,20 +1,20 @@
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtWidgets
 import os
 from typing import Optional
 from help import Ui_Help
-from profileshelp import  Ui_Help as Profile_Help
+from profileshelp import Ui_Help as Profile_Help
 from auxhelp import Ui_Help as Aux_Help
 from helpauxjp import Ui_Help as Aux_Help_Jp
-from helpprofilejp import  Ui_Help as Profile_Help_Jp
+from helpprofilejp import Ui_Help as Profile_Help_Jp
 from helpcommonjp import Ui_Help as Common_Help_Jp
 from helpcommonru import Ui_Help as Common_Help_Ru
-from helpprofileru import  Ui_Help as Profile_Help_Ru
+from helpprofileru import Ui_Help as Profile_Help_Ru
 from helpauxru import Ui_Help as Aux_Help_Ru
 from localtable import local_table
 
-about_text = """Settings Editor 1.1 for lightsabers.
-By Warsabers.ru"""
+about_text = """Settings Editor 2.0 for lightsabers.
+By Warsabers.com"""
 
 
 class CommonHelp(QtWidgets.QDialog, Ui_Help):
@@ -51,6 +51,7 @@ class ProfileHelpRu(QtWidgets.QDialog, Profile_Help_Ru):
         super().__init__()
         self.setupUi(self)
 
+
 class AuxHelpRu(QtWidgets.QDialog, Aux_Help_Ru):
 
     def __init__(self):
@@ -64,11 +65,13 @@ class CommonHelpJp(QtWidgets.QDialog, Common_Help_Jp):
         super().__init__()
         self.setupUi(self)
 
+
 class ProfileHelpJp(QtWidgets.QDialog, Profile_Help_Jp):
 
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
 
 class AuxHelpJp(QtWidgets.QDialog, Aux_Help_Jp):
 
@@ -135,18 +138,20 @@ def profile_help(lang: str):
         help_window = ProfileHelpJp()
         help_window.exec()
 
+
 def editor_help(text, lang):
     """
     functions for showing help window
-    :param text:
+    :param text: text for help
+    :param lang: language for use
     :return:
     """
-    help = QMessageBox()
-    help.setIcon(QMessageBox.Information)
-    help.setText(text)
-    help.setWindowTitle(local_table['About'][lang])
-    help.setStandardButtons(QMessageBox.Ok)
-    help.exec_()
+    help_popup = QMessageBox()
+    help_popup.setIcon(QMessageBox.Information)
+    help_popup.setText(text)
+    help_popup.setWindowTitle(local_table['About'][lang])
+    help_popup.setStandardButtons(QMessageBox.Ok)
+    help_popup.exec_()
 
 
 def find_file(filename: str, path: str = ".") -> Optional[str]:

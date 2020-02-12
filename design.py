@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1365, 775)
+        MainWindow.resize(1406, 802)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/logo/LogoICO.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -20,8 +20,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setMinimumSize(QtCore.QSize(1240, 87))
-        self.tabWidget.setMaximumSize(QtCore.QSize(3000, 16777215))
+        self.tabWidget.setMinimumSize(QtCore.QSize(1300, 700))
+        self.tabWidget.setMaximumSize(QtCore.QSize(1600, 1000))
         self.tabWidget.setObjectName("tabWidget")
         self.TabAuxLEDs = QtWidgets.QWidget()
         self.TabAuxLEDs.setObjectName("TabAuxLEDs")
@@ -1523,7 +1523,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1365, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1406, 26))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
