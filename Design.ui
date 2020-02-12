@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1338</width>
+    <width>1365</width>
     <height>775</height>
    </rect>
   </property>
@@ -34,7 +34,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="TabAuxLEDs">
        <attribute name="title">
@@ -937,160 +937,21 @@
         <string>Common</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
-        <item row="22" column="2" colspan="14">
-         <widget class="Line" name="line_6">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="QLabel" name="LblGeneral">
-          <property name="text">
-           <string>General Settings</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="28" column="2">
-         <widget class="QLabel" name="LblCommonStatus">
-          <property name="text">
-           <string>Open File Status:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="13">
-         <widget class="QLabel" name="LBLBlade2Enabled">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="15">
-         <widget class="QCheckBox" name="CBBlade2Enabled">
-          <property name="maximumSize">
-           <size>
-            <width>0</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="33" column="15" alignment="Qt::AlignRight">
-         <widget class="QLabel" name="LBLIcon2">
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Inside/Desktop/logo85.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="25" column="2">
-         <widget class="QLabel" name="LblMotion">
-          <property name="text">
-           <string>Motion Settings:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="11" column="14" rowspan="2" colspan="2">
-         <widget class="QGroupBox" name="GBCommonSettings">
+        <item row="11" column="5" rowspan="2" colspan="4">
+         <widget class="QGroupBox" name="GBCommonBlade2">
           <property name="title">
-           <string>Other Settings</string>
+           <string>Blade2 Settings</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout_16">
-           <item row="0" column="0">
-            <widget class="QLabel" name="LblPowerOffTimeout">
+          <layout class="QGridLayout" name="gridLayout_26">
+           <item row="3" column="0">
+            <widget class="QLabel" name="LblStartFlash_2">
              <property name="text">
-              <string>Deep Sleep
-Timeout, s:</string>
+              <string>Start Flash From №</string>
              </property>
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QSpinBox" name="SpinPowerOffTimeout">
-             <property name="maximum">
-              <number>99999</number>
-             </property>
-             <property name="singleStep">
-              <number>10</number>
-             </property>
-             <property name="value">
-              <number>300</number>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="33" column="2" colspan="13">
-         <widget class="QTextBrowser" name="TxtCommonStatus">
-          <property name="minimumSize">
-           <size>
-            <width>1100</width>
-            <height>85</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>1100</width>
-            <height>75</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="27" column="15">
-         <widget class="QPushButton" name="BtnSave">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string>Save</string>
-          </property>
-          <property name="autoDefault">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="27" column="14">
-         <widget class="QPushButton" name="BtnDefault">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string>Reset to Default</string>
-          </property>
-          <property name="autoDefault">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="11" column="2" rowspan="2" colspan="3">
-         <widget class="QGroupBox" name="GBCommonBlade">
-          <property name="title">
-           <string>Blade Settings</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_13">
-           <item row="0" column="0">
-            <widget class="QLabel" name="LblBandNumber">
-             <property name="text">
-              <string>Stripes in Chain:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QSpinBox" name="SpinBand">
+            <widget class="QSpinBox" name="SpinBandNumber">
              <property name="minimum">
               <number>1</number>
              </property>
@@ -1098,32 +959,19 @@ Timeout, s:</string>
               <number>8</number>
              </property>
              <property name="value">
-              <number>3</number>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QSpinBox" name="SpinStartFlash">
-             <property name="minimum">
               <number>1</number>
-             </property>
-             <property name="maximum">
-              <number>144</number>
-             </property>
-             <property name="value">
-              <number>15</number>
              </property>
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QLabel" name="LblPixPerBand">
+            <widget class="QLabel" name="LblPixPerBand_2">
              <property name="text">
               <string>LEDs in Stripe:</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
-            <widget class="QSpinBox" name="SpinPixPerBand">
+           <item row="3" column="1">
+            <widget class="QSpinBox" name="SpinStartFlash_2">
              <property name="minimum">
               <number>1</number>
              </property>
@@ -1131,14 +979,24 @@ Timeout, s:</string>
               <number>144</number>
              </property>
              <property name="value">
-              <number>144</number>
+              <number>8</number>
              </property>
             </widget>
            </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="LblStartFlash">
+           <item row="0" column="0">
+            <widget class="QLabel" name="LblBandNumber_2">
              <property name="text">
-              <string>Start Flash From №</string>
+              <string>Stripes in Chain:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QSpinBox" name="SpinPixPerBand2">
+             <property name="maximum">
+              <number>144</number>
+             </property>
+             <property name="value">
+              <number>12</number>
              </property>
             </widget>
            </item>
@@ -1222,79 +1080,13 @@ Timeout, s:</string>
           </layout>
          </widget>
         </item>
-        <item row="11" column="5" rowspan="2" colspan="4">
-         <widget class="QGroupBox" name="GBCommonBlade2">
-          <property name="title">
-           <string>Blade2 Settings</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_26">
-           <item row="1" column="1">
-            <widget class="QSpinBox" name="SpinPixPerBand2">
-             <property name="maximum">
-              <number>144</number>
-             </property>
-             <property name="value">
-              <number>12</number>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="LblStartFlash_2">
-             <property name="text">
-              <string>Start Flash From №</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QSpinBox" name="SpinBandNumber">
-             <property name="minimum">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <number>8</number>
-             </property>
-             <property name="value">
-              <number>1</number>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QSpinBox" name="SpinStartFlash_2">
-             <property name="minimum">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <number>144</number>
-             </property>
-             <property name="value">
-              <number>8</number>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="LblBandNumber_2">
-             <property name="text">
-              <string>Stripes in Chain:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="LblPixPerBand_2">
-             <property name="text">
-              <string>LEDs in Stripe:</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
         <item row="26" column="7" colspan="3">
          <widget class="QGroupBox" name="GBSpin">
           <property name="title">
            <string>Accent Spin</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_18">
-           <item row="1" column="0">
+           <item row="1" column="1">
             <widget class="QLabel" name="LBLSpinCounter">
              <property name="text">
               <string>Min Semicircle 
@@ -1302,17 +1094,7 @@ Before Start:</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
-            <widget class="QCheckBox" name="CBSpinEnabled">
-             <property name="text">
-              <string/>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
+           <item row="3" column="2">
             <widget class="QSpinBox" name="SpinSpinCircle">
              <property name="minimum">
               <number>100</number>
@@ -1328,14 +1110,38 @@ Before Start:</string>
              </property>
             </widget>
            </item>
-           <item row="3" column="0">
+           <item row="0" column="2">
+            <widget class="QCheckBox" name="CBSpinEnabled">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
             <widget class="QLabel" name="LblSpinCircle">
              <property name="text">
               <string>Circle Length, ms:</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
+           <item row="0" column="1">
+            <widget class="QLabel" name="LBLSpinEnabled">
+             <property name="text">
+              <string>Enabled:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="LblSpinW">
+             <property name="text">
+              <string>Min Start Speed:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
             <widget class="QSpinBox" name="SpinSpinCounter">
              <property name="minimum">
               <number>2</number>
@@ -1348,28 +1154,14 @@ Before Start:</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="LBLSpinEnabled">
-             <property name="text">
-              <string>Enabled:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="LblSpinW">
-             <property name="text">
-              <string>Min Start Speed:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0">
+           <item row="4" column="1">
             <widget class="QLabel" name="LblSpinWLow">
              <property name="text">
               <string>Min Out Speed:</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
+           <item row="2" column="2">
             <widget class="QDoubleSpinBox" name="SpinSpinW">
              <property name="decimals">
               <number>1</number>
@@ -1379,7 +1171,7 @@ Before Start:</string>
              </property>
             </widget>
            </item>
-           <item row="4" column="1">
+           <item row="4" column="2">
             <widget class="QDoubleSpinBox" name="SpinSpinWLow">
              <property name="decimals">
               <number>1</number>
@@ -1395,104 +1187,7 @@ Before Start:</string>
           </layout>
          </widget>
         </item>
-        <item row="26" column="4" colspan="3">
-         <widget class="QGroupBox" name="GBSmoothSwing">
-          <property name="title">
-           <string>Smooth Swing</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_27">
-           <item row="3" column="0">
-            <widget class="QLabel" name="LblSmoothSwingMaxVolume">
-             <property name="text">
-              <string>Swing strengh
- of max volume</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="LblSmoothSwingMinVolume">
-             <property name="text">
-              <string>Swing H/L Min
-volume, %:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="LblSmoothSwingLength">
-             <property name="text">
-              <string>Lenght of pair
- swithching, ms:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1">
-            <widget class="QSpinBox" name="SpinSmoothSwingMinVolume">
-             <property name="maximum">
-              <number>100</number>
-             </property>
-             <property name="value">
-              <number>30</number>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QSpinBox" name="SpinSmoothSwingMinHum">
-             <property name="maximum">
-              <number>100</number>
-             </property>
-             <property name="value">
-              <number>30</number>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QSpinBox" name="SpinSmoothSwingStrength">
-             <property name="value">
-              <number>6</number>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QSpinBox" name="SpinSmoothSwingLength">
-             <property name="maximum">
-              <number>9999999</number>
-             </property>
-             <property name="value">
-              <number>640</number>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="LbLSmoothSwingMinHum">
-             <property name="text">
-              <string>Min Hum Volume, %:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="LblSmoothSwingStart">
-             <property name="text">
-              <string>Threshold of Start</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QDoubleSpinBox" name="SpinSmoothSwingStart">
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
-             <property name="value">
-              <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="26" column="2" colspan="2">
+        <item row="26" column="5" colspan="2">
          <widget class="QGroupBox" name="GBSwing">
           <property name="title">
            <string>Accent Swing</string>
@@ -1573,97 +1268,21 @@ of Next Swing, %:</string>
           </layout>
          </widget>
         </item>
-        <item row="26" column="10" colspan="2">
-         <widget class="QGroupBox" name="GBClash">
-          <property name="title">
-           <string>Clash</string>
+        <item row="22" column="2" colspan="14">
+         <widget class="Line" name="line_6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
-          <layout class="QGridLayout" name="gridLayout_19">
-           <item row="2" column="0">
-            <widget class="QLabel" name="LblClashHitLevel">
-             <property name="text">
-              <string>HitLevel:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="LblClashLength">
-             <property name="text">
-              <string>Duration, ms:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QSpinBox" name="SpinClashHitLevel">
-             <property name="minimum">
-              <number>-1000</number>
-             </property>
-             <property name="maximum">
-              <number>1000</number>
-             </property>
-             <property name="singleStep">
-              <number>50</number>
-             </property>
-             <property name="value">
-              <number>-200</number>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QSpinBox" name="SpinClashHighA">
-             <property name="minimum">
-              <number>1000</number>
-             </property>
-             <property name="maximum">
-              <number>9999</number>
-             </property>
-             <property name="singleStep">
-              <number>100</number>
-             </property>
-             <property name="value">
-              <number>3600</number>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QSpinBox" name="SpinClashLength">
-             <property name="maximum">
-              <number>9999</number>
-             </property>
-             <property name="value">
-              <number>15</number>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="LblClashHighA">
-             <property name="text">
-              <string>Min Strength:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="LblClashLowW">
-             <property name="text">
-              <string>Min Angular 
-Velocity:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QDoubleSpinBox" name="SpinClashLowW">
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
-             <property name="value">
-              <double>2.700000000000000</double>
-             </property>
-            </widget>
-           </item>
-          </layout>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="LblGeneral">
+          <property name="text">
+           <string>General Settings</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
          </widget>
         </item>
         <item row="26" column="12" colspan="2">
@@ -1853,6 +1472,403 @@ Displacement</string>
             </widget>
            </item>
           </layout>
+         </widget>
+        </item>
+        <item row="26" column="10" colspan="2">
+         <widget class="QGroupBox" name="GBClash">
+          <property name="title">
+           <string>Clash</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_19">
+           <item row="2" column="0">
+            <widget class="QLabel" name="LblClashHitLevel">
+             <property name="text">
+              <string>HitLevel:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="LblClashLength">
+             <property name="text">
+              <string>Duration, ms:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QSpinBox" name="SpinClashHitLevel">
+             <property name="minimum">
+              <number>-1000</number>
+             </property>
+             <property name="maximum">
+              <number>1000</number>
+             </property>
+             <property name="singleStep">
+              <number>50</number>
+             </property>
+             <property name="value">
+              <number>-200</number>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QSpinBox" name="SpinClashHighA">
+             <property name="minimum">
+              <number>1000</number>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+             <property name="singleStep">
+              <number>100</number>
+             </property>
+             <property name="value">
+              <number>3600</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QSpinBox" name="SpinClashLength">
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+             <property name="value">
+              <number>15</number>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="LblClashHighA">
+             <property name="text">
+              <string>Min Strength:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="LblClashLowW">
+             <property name="text">
+              <string>Min Angular 
+Velocity:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QDoubleSpinBox" name="SpinClashLowW">
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+             <property name="value">
+              <double>2.700000000000000</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="13">
+         <widget class="QLabel" name="LBLBlade2Enabled">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="15">
+         <widget class="QCheckBox" name="CBBlade2Enabled">
+          <property name="maximumSize">
+           <size>
+            <width>0</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="33" column="15" alignment="Qt::AlignRight">
+         <widget class="QLabel" name="LBLIcon2">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Inside/Desktop/logo85.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="25" column="2">
+         <widget class="QLabel" name="LblMotion">
+          <property name="text">
+           <string>Motion Settings:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="33" column="2" colspan="13">
+         <widget class="QTextBrowser" name="TxtCommonStatus">
+          <property name="minimumSize">
+           <size>
+            <width>1100</width>
+            <height>85</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>1100</width>
+            <height>75</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="27" column="15">
+         <widget class="QPushButton" name="BtnSave">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Save</string>
+          </property>
+          <property name="autoDefault">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="27" column="14">
+         <widget class="QPushButton" name="BtnDefault">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Reset to Default</string>
+          </property>
+          <property name="autoDefault">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="11" column="2" rowspan="2" colspan="3">
+         <widget class="QGroupBox" name="GBCommonBlade">
+          <property name="title">
+           <string>Blade Settings</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_13">
+           <item row="0" column="0">
+            <widget class="QLabel" name="LblBandNumber">
+             <property name="text">
+              <string>Stripes in Chain:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QSpinBox" name="SpinBand">
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>8</number>
+             </property>
+             <property name="value">
+              <number>3</number>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QSpinBox" name="SpinStartFlash">
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>144</number>
+             </property>
+             <property name="value">
+              <number>15</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="LblPixPerBand">
+             <property name="text">
+              <string>LEDs in Stripe:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QSpinBox" name="SpinPixPerBand">
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>144</number>
+             </property>
+             <property name="value">
+              <number>144</number>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="LblStartFlash">
+             <property name="text">
+              <string>Start Flash From №</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="26" column="2" colspan="3">
+         <widget class="QGroupBox" name="GBSmoothSwing">
+          <property name="title">
+           <string>Smooth Swing</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_27">
+           <item row="4" column="0">
+            <widget class="QLabel" name="LblSmoothSwingMaxVolume">
+             <property name="text">
+              <string>Swing strengh
+ of max volume</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="LblSmoothSwingMinVolume">
+             <property name="text">
+              <string>Swing H/L Min
+volume, %:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="LblSmoothSwingLength">
+             <property name="text">
+              <string>Lenght of pair
+ swithching, ms:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QSpinBox" name="SpinSmoothSwingMinVolume">
+             <property name="maximum">
+              <number>100</number>
+             </property>
+             <property name="value">
+              <number>30</number>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QSpinBox" name="SpinSmoothSwingStrength">
+             <property name="value">
+              <number>6</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QSpinBox" name="SpinSmoothSwingLength">
+             <property name="maximum">
+              <number>9999999</number>
+             </property>
+             <property name="value">
+              <number>640</number>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="LblSmoothSwingStart">
+             <property name="text">
+              <string>Threshold of Start</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QDoubleSpinBox" name="SpinSmoothSwingStart">
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+             <property name="value">
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="LbLSmoothSwingMinHum">
+             <property name="text">
+              <string>Min Hum Volume, %:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QSpinBox" name="SpinSmoothSwingMinHum">
+             <property name="maximum">
+              <number>100</number>
+             </property>
+             <property name="value">
+              <number>30</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="11" column="14" rowspan="2" colspan="2">
+         <widget class="QGroupBox" name="GBCommonSettings">
+          <property name="title">
+           <string>Other Settings</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_16">
+           <item row="0" column="0">
+            <widget class="QLabel" name="LblPowerOffTimeout">
+             <property name="text">
+              <string>Deep Sleep
+Timeout, s:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QSpinBox" name="SpinPowerOffTimeout">
+             <property name="maximum">
+              <number>99999</number>
+             </property>
+             <property name="singleStep">
+              <number>10</number>
+             </property>
+             <property name="value">
+              <number>300</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QSpinBox" name="HiddenSpin">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="28" column="2" colspan="4">
+         <widget class="QLabel" name="LblCommonStatus">
+          <property name="text">
+           <string>Open File Status:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+          </property>
          </widget>
         </item>
        </layout>
@@ -3587,7 +3603,7 @@ Displacement</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1338</width>
+     <width>1365</width>
      <height>26</height>
     </rect>
    </property>

@@ -185,8 +185,8 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.volume_controls = [self.SpinCommon, self.SpinCoarseLow, self.SpinCoarseMid, self.SpinCoarseHigh]
         self.other_ccntrols = [self.SpinPowerOffTimeout]
         self.swing_controls = [self.SpinSwingHighW, self.SpinSwingPercent, self.SpinSwingCircle, self.SpinSwingCircleW]
-        self.smooth_swing_controls = [self.SpinSmoothSwingStart, self.SpinSmoothSwingLength,
-                                      self.SpinSmoothSwingStrength, self.SpinSmoothSwingMinHum,
+        self.smooth_swing_controls = [self.SpinSmoothSwingStart, self.HiddenSpin, self.SpinSmoothSwingLength,
+                                      self.SpinSmoothSwingMinHum,  self.SpinSmoothSwingStrength,
                                       self.SpinSmoothSwingMinVolume]
         self.spin_controls = [self.CBSpinEnabled, self.SpinSpinCounter, self.SpinSpinW, self.SpinSpinCircle,
                               self.SpinSpinWLow]
@@ -195,8 +195,8 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
                               self.SpinStabLength, self.SpinStabPercent]
         self.screw_controls = [self.CBScrewEnabled, self.SpinScrewHighW, self.SpinScrewLowW]
         self.common_controls = [self.blade1_controls, self.blade2_controls, self.volume_controls, self.other_ccntrols]
-        self.motion_controls = [self.swing_controls, self.spin_controls, self.clash_controls, self.stab_controls,
-                                self.screw_controls, self.smooth_swing_controls]
+        self.motion_controls = [self.swing_controls, self.smooth_swing_controls, self.spin_controls,
+                                self.clash_controls, self.stab_controls,self.screw_controls]
 
         # common_controls_connect_maps
         self.common_dict = {}
@@ -2114,7 +2114,7 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
                 self.ErrorMessage("Could not load file % s: % s" % (openfilename, error))
             else:
                 if warning:
-                    if i == 1:
+                    if index == 1:
                         warning = warning.replace("Data error in", local_table['wrong_data_in'][self.language])
                         warning = warning.replace("Sequencer error in", local_table['seq_error'][self.language])
                         warning = warning.replace("LED Group error in", local_table['leg_group_error'][self.language])
