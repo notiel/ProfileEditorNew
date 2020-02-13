@@ -2102,7 +2102,7 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
                 index = 2
             if not self.saved[index]:
                 msg = local_table['unsaved_warning'][self.language].split('@@@')
-                save_msg = msg[0] + tabnames_global[i] + msg[1]
+                save_msg = msg[0] + tabnames_global[index] + msg[1]
                 reply = QMessageBox.question(self, 'Message', save_msg, QMessageBox.Yes, QMessageBox.No)
                 if reply == QMessageBox.Yes:
                     self.SavePressed()

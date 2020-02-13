@@ -72,6 +72,7 @@ class CommonData:
             data['Blade2'].pop('Enabled')
         else:
             data.pop('Blade2')
+        data['Motion']['SwingSmooth']['HighWSmooth'] = round(data['Motion']['SwingSmooth']['HighWSmooth'], 3)
         text = pprint.pformat(data, indent=0)
         text = text.replace(r"'", "")
         f = open(filename, "w", encoding='utf-8')
