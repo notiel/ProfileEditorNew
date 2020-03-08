@@ -192,7 +192,7 @@ def get_common_data(text: str) -> Tuple[dict, str, str]:
     return commondata.load_data_from_text(text)
 
 
-def color_data_to_str(color: Union[Sequence[int], str]) -> str:
+def color_data_to_str(color: Union[List[int], str]) -> str:
     """
     converts rgb list to string
     :param color: rgb list [0, 255, 0]

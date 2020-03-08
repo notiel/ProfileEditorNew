@@ -1600,13 +1600,6 @@ Velocity:</string>
           </property>
          </widget>
         </item>
-        <item row="25" column="2">
-         <widget class="QLabel" name="LblMotion">
-          <property name="text">
-           <string>Motion Settings:</string>
-          </property>
-         </widget>
-        </item>
         <item row="33" column="2" colspan="13">
          <widget class="QTextBrowser" name="TxtCommonStatus">
           <property name="minimumSize">
@@ -1871,6 +1864,13 @@ Timeout, s:</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+          </property>
+         </widget>
+        </item>
+        <item row="25" column="2" colspan="3">
+         <widget class="QLabel" name="LblMotion">
+          <property name="text">
+           <string>Motion Settings:</string>
           </property>
          </widget>
         </item>
@@ -2410,10 +2410,10 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>1</number>
+               <number>0</number>
               </property>
               <property name="maximum">
-               <number>9</number>
+               <number>9999</number>
               </property>
               <property name="value">
                <number>2</number>
@@ -2426,7 +2426,7 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -2456,10 +2456,10 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>1</number>
+               <number>0</number>
               </property>
               <property name="maximum">
-               <number>27</number>
+               <number>9999</number>
               </property>
               <property name="value">
                <number>12</number>
@@ -2486,7 +2486,7 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>12</number>
+               <number>0</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -2502,10 +2502,10 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>54</number>
+               <number>0</number>
               </property>
               <property name="maximum">
-               <number>9999</number>
+               <number>999999999</number>
               </property>
               <property name="singleStep">
                <number>10</number>
@@ -2555,10 +2555,10 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>1</number>
+               <number>0</number>
               </property>
               <property name="maximum">
-               <number>180</number>
+               <number>99999999</number>
               </property>
               <property name="singleStep">
                <number>10</number>
@@ -2690,10 +2690,10 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>90</number>
+               <number>0</number>
               </property>
               <property name="maximum">
-               <number>99999</number>
+               <number>99999999</number>
               </property>
               <property name="singleStep">
                <number>10</number>
@@ -2709,10 +2709,10 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>1</number>
+               <number>0</number>
               </property>
               <property name="maximum">
-               <number>360</number>
+               <number>99999999</number>
               </property>
               <property name="singleStep">
                <number>10</number>
@@ -2735,10 +2735,10 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>50</number>
+               <number>0</number>
               </property>
               <property name="maximum">
-               <number>100</number>
+               <number>999999999</number>
               </property>
               <property name="value">
                <number>100</number>
@@ -2761,7 +2761,7 @@ Timeout, s:</string>
                <number>0</number>
               </property>
               <property name="maximum">
-               <number>100</number>
+               <number>99999999</number>
               </property>
               <property name="value">
                <number>50</number>
@@ -3277,7 +3277,7 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="maximum">
-               <number>100</number>
+               <number>9999</number>
               </property>
               <property name="value">
                <number>50</number>
@@ -3317,7 +3317,7 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>45</number>
+               <number>0</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -3356,7 +3356,7 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>15</number>
+               <number>0</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -3375,10 +3375,10 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>1</number>
+               <number>0</number>
               </property>
               <property name="maximum">
-               <number>15</number>
+               <number>9999</number>
               </property>
               <property name="singleStep">
                <number>1</number>
@@ -3473,10 +3473,10 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>1</number>
+               <number>0</number>
               </property>
               <property name="maximum">
-               <number>80</number>
+               <number>9999</number>
               </property>
               <property name="value">
                <number>45</number>
@@ -3528,10 +3528,10 @@ Timeout, s:</string>
                <bool>false</bool>
               </property>
               <property name="minimum">
-               <number>50</number>
+               <number>0</number>
               </property>
               <property name="maximum">
-               <number>100</number>
+               <number>9999</number>
               </property>
               <property name="value">
                <number>100</number>
@@ -3594,6 +3594,70 @@ Timeout, s:</string>
            </layout>
           </widget>
          </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Font optimizing</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_15">
+        <item row="1" column="0">
+         <widget class="QLabel" name="LblInsertPath">
+          <property name="text">
+           <string>Or insert path:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QPushButton" name="BtnOptimize">
+          <property name="text">
+           <string>Start optimizing</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLineEdit" name="LineFontPath"/>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="BtnSelectFont">
+          <property name="text">
+           <string>Select path font</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="LnlStatus">
+          <property name="text">
+           <string>Status:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <spacer name="verticalSpacer_11">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>

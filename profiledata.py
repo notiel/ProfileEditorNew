@@ -1,25 +1,28 @@
-from typing import Sequence, Tuple, Optional, Any, List, Callable, Dict, Union
+from typing import Sequence, Optional, Any, List, Callable, Dict, Union
 import pprint
 import IniToJson
 import profilechecker
 from collections import OrderedDict
 
-default_profile = OrderedDict({'AfterWake': {},
-                               'PowerOn': {'Blade': {'Speed': 144}},
-                               'WorkingMode': {'Color': [0, 255, 0], 'Flaming': 0, 'FlickeringAlways': 0},
-                               'PowerOff': {'Blade': {'Speed': 144, 'MoveForward': 0}},
+default_profile = OrderedDict({'AfterWake': {"AuxLeds": []},
+                               'PowerOn': {'Blade': {'Speed': 144}, "AuxLeds": []},
+                               'WorkingMode': {'Color': [0, 255, 0], 'Flaming': 0, 'FlickeringAlways': 0,
+                                               "AuxLeds": []},
+                               'PowerOff': {'Blade': {'Speed': 144, 'MoveForward': 0}, "AuxLeds": []},
                                'Flaming': {'Size': {'Min': 2, 'Max': 9}, 'Speed': {'Min': 12, 'Max': 27},
                                            'Delay_ms': {'Min': 54, 'Max': 180},
                                            'Colors': ['random']},
-                               'Flickering': {'Time': {'Min': 90, 'Max': 360}, 'Brightness': {'Min': 50, 'Max': 100}},
-                               'Blaster': {'Color': [255, 0, 0], 'Duration_ms': 720, 'SizePix': 7},
-                               'Clash': {'Color': [255, 0, 0], 'Duration_ms': 720, 'SizePix': 11},
-                               'Stab': {'Color': [255, 0, 0], 'Duration_ms': 720, 'SizePix': 11},
+                               'Flickering': {'Time': {'Min': 90, 'Max': 360}, 'Brightness': {'Min': 50, 'Max': 100},
+                                              "AuxLeds": []},
+                               'Blaster': {'Color': [255, 0, 0], 'Duration_ms': 720, 'SizePix': 7, "AuxLeds": []},
+                               'Clash': {'Color': [255, 0, 0], 'Duration_ms': 720, 'SizePix': 11, "AuxLeds": []},
+                               'Stab': {'Color': [255, 0, 0], 'Duration_ms': 720, 'SizePix': 11, "AuxLeds": []},
                                'Lockup': {'Flicker': {'Color': [255, 0, 0], 'Time': {'Min': 45, 'Max': 80},
                                                       'Brightness': {'Min': 50, 'Max': 100}},
                                           'Flashes': {'Period': {'Min': 15, 'Max': 25}, 'Color': [255, 0, 0],
                                                       'Duration_ms': 50,
-                                                      'SizePix': 7}},
+                                                      'SizePix': 7},
+                                          "AuxLeds": []},
                                'Blade2': {
                                    'IndicateBlasterClashLockup': 1,
                                    'WorkingMode': {'Color': [0, 255, 0]},
@@ -55,22 +58,24 @@ class Profiles:
         :param name: name of profile
         :return:
         """
-        self.data[name] = {'AfterWake': {},
-                           'PowerOn': {'Blade': {'Speed': 144}},
-                           'WorkingMode': {'Color': [0, 0, 255], 'Flaming': 0, 'FlickeringAlways': 0},
-                           'PowerOff': {'Blade': {'Speed': 144, 'MoveForward': 0}},
+        self.data[name] = {'AfterWake': {"AuxLeds": []},
+                           'PowerOn': {'Blade': {'Speed': 144}, "AuxLeds": []},
+                           'WorkingMode': {'Color': [0, 0, 255], 'Flaming': 0, 'FlickeringAlways': 0, "AuxLeds": []},
+                           'PowerOff': {'Blade': {'Speed': 144, 'MoveForward': 0}, "AuxLeds": []},
                            'Flaming': {'Size': {'Min': 2, 'Max': 9}, 'Speed': {'Min': 12, 'Max': 27},
                                        'Delay_ms': {'Min': 54, 'Max': 180},
                                        'Colors': ['random']},
-                           'Flickering': {'Time': {'Min': 90, 'Max': 360}, 'Brightness': {'Min': 50, 'Max': 100}},
-                           'Blaster': {'Color': [255, 0, 0], 'Duration_ms': 720, 'SizePix': 7},
-                           'Clash': {'Color': [255, 0, 0], 'Duration_ms': 720, 'SizePix': 11},
-                           'Stab': {'Color': [255, 0, 0], 'Duration_ms': 720, 'SizePix': 11},
+                           'Flickering': {'Time': {'Min': 90, 'Max': 360}, 'Brightness': {'Min': 50, 'Max': 100},
+                                          "AuxLeds": []},
+                           'Blaster': {'Color': [255, 0, 0], 'Duration_ms': 720, 'SizePix': 7, "AuxLeds": []},
+                           'Clash': {'Color': [255, 0, 0], 'Duration_ms': 720, 'SizePix': 11, "AuxLeds": []},
+                           'Stab': {'Color': [255, 0, 0], 'Duration_ms': 720, 'SizePix': 11, "AuxLeds": []},
                            'Lockup': {'Flicker': {'Color': [255, 0, 0], 'Time': {'Min': 45, 'Max': 80},
                                                   'Brightness': {'Min': 50, 'Max': 100}},
                                       'Flashes': {'Period': {'Min': 15, 'Max': 25}, 'Color': [255, 0, 0],
                                                   'Duration_ms': 50,
-                                                  'SizePix': 7}},
+                                                  'SizePix': 7},
+                                      "AuxLeds": []},
                            'Blade2': {
                                'IndicateBlasterClashLockup': 1,
                                'WorkingMode': {'Color': [0, 0, 255]},
@@ -93,7 +98,8 @@ class Profiles:
         self.data.pop(name)
         self.order.remove(name)
 
-    def get_default(self, path: List[str]) -> Dict[str, Any]:
+    @staticmethod
+    def get_default(path: List[str]) -> Dict[str, Any]:
         """
         gets default value for key path
         :param path: pat of keys
@@ -198,8 +204,8 @@ class Profiles:
         try:
             data = self.data[profile][effect]
             data[aux_key].remove(aux)
-            if not data[aux_key]:
-                data.pop(aux_key)
+            # if not data[aux_key]:
+            #    data.pop(aux_key)
         except (IndexError, KeyError):
             print("Incorrects key or aux name")  # to do logging
 
@@ -255,14 +261,6 @@ class Profiles:
         :param filename: name of file to save
         :return:
         """
-        # text: str = ""
-        # for key in self.data.keys():
-        #    inner: str = pprint.pformat(self.data[key], indent=0)
-        #    inner_draft: List[str] = inner.split('\n')
-        #    inner = ""
-        #    for line in inner_draft:
-        #        inner += "\t"+line+'\n'
-        #    text += "%s:\n %s, " % (key, inner)
         pprint.sorted = lambda x, key=None: x
         new_data = {key: data[key] for key in self.order}
         text = pprint.pformat(new_data)
