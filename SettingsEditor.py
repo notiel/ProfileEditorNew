@@ -1,6 +1,6 @@
 import os
 import sys
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QMessageBox
 import design
 from Auxledsdata import *
@@ -10,6 +10,8 @@ import Mediator
 import assistant
 import palitra
 from localtable import local_table
+import wav_convertion
+import datetime
 
 from loguru import logger
 
@@ -73,7 +75,7 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.data = [self.auxdata, self.commondata, self.profiledata]
         self.saved = [True, True, True]
         self.filename = ["", "", ""]
-        self.default_names = ["Auxleds.ini", "Cmon.ini", "Profiles.ini"]
+        self.default_names = ["Auxleds.ini", "Common.ini", "Profiles.ini"]
         self.savefunctions = [self.auxdata.save_to_file, self.commondata.save_to_file, self.profiledata.save_to_file]
         self.openfunctions = [Mediator.translate_json_to_tree_structure, Mediator.get_common_data,
                               Mediator.load_profiles]
@@ -104,8 +106,10 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.actionAbout.triggered.connect(self.about_help)
         self.actionOpenAll.triggered.connect(self.open_all_pressed)
 
-        # self.setWindowIcon(QtGui.QIcon(resource_path('LogoICO.ico')))
-        # self.tray_icon.setIcon(QtGui.QIcon(resource_path('LogoICO.ico')))
+        self.BtnSelectFont.clicked.connect(self.font_folder_clicked)
+        self.LineFontPath.editingFinished.connect(self.get_folder_from_field)
+        self.BtnOptimize.clicked.connect(self.optimize_fonts)
+
 
     # init part
     def init_aux_ui(self):
@@ -183,7 +187,7 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
         self.blade1_controls = [self.SpinBand, self.SpinPixPerBand, self.SpinStartFlash]
         self.blade2_controls = [self.SpinBandNumber, self.SpinPixPerBand2, self.SpinStartFlash_2]
         self.volume_controls = [self.SpinCommon, self.SpinCoarseLow, self.SpinCoarseMid, self.SpinCoarseHigh]
-        self.other_ccntrols = [self.SpinPowerOffTimeout]
+        self.other_ccntrols = [self.SpinPowerOffTimeout, self.CBOneButton, self.CBPowerOnByStab]
         self.swing_controls = [self.SpinSwingHighW, self.SpinSwingPercent, self.SpinSwingCircle, self.SpinSwingCircleW]
         self.smooth_swing_controls = [self.SpinSmoothSwingStart, self.HiddenSpin, self.SpinSmoothSwingLength,
                                       self.SpinSmoothSwingMinHum, self.SpinSmoothSwingStrength,
@@ -211,7 +215,8 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
         # common controls init
         for control_list in self.common_controls + self.motion_controls:
             for control in control_list:
-                if control in (self.CBBlade2Enabled, self.CBSpinEnabled, self.CBStabEnabled, self.CBScrewEnabled):
+                if control in (self.CBBlade2Enabled, self.CBSpinEnabled, self.CBStabEnabled, self.CBScrewEnabled,
+                               self.CBPowerOnByStab, self.CBOneButton):
                     control.stateChanged.connect(self.cb_clicked)
                 else:
                     control.valueChanged.connect(self.spin_changed)
@@ -404,7 +409,8 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
                          self.LblClashHitLevel, self.LblClashLowW, self.LblEnabled, self.LblStabHighA, self.LblStabLowW,
                          self.LblStabHitLevel, self.LblStabPercent, self.LblScrewEnabled, self.LbScrewHighW,
                          self.LblScrewLowW, self.LblMotion, self.LblCommonStatus, self.LblSmoothSwingStart,
-                         self.LblSmoothSwingMaxVolume, self.LbLSmoothSwingMinHum, self.LblSmoothSwingMinVolume]
+                         self.LblSmoothSwingMaxVolume, self.LbLSmoothSwingMinHum, self.LblSmoothSwingMinVolume,
+                         self.LblOneButton, self.LblPowerOnByStab]
         common_labels_ms = [self.LblSwingCircle, self.LblSpinCircle, self.LblClashLength, self.LblSpinLength,
                             self.LblSmoothSwingLength]
         labels_s = [self.LblPowerOffTimeout]
@@ -436,9 +442,13 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
         profile_cb = [self.CBWMRandom, self.CBFlaming, self.CBFlickering, self.CBMoveForward, self.CBFlickerRandom,
                       self.CBFlashesRandom, self.CBBlasterRandom, self.CBStabRandom, self.CBClashRandom,
                       self.CBIndicate]
+        font_labels = [self.LblInsertPath]
+        font_labels_without_colon = [self.LblFont]
+        font_buttons = [self.BtnOptimize, self.BtnSelectFont]
         all_labels = aux_labels.copy()
         all_labels.extend(common_labels)
         all_labels.extend(profile_labels)
+        all_labels.extend(font_labels)
         all_groups_labels = aux_groups.copy()
         all_groups_labels.extend(common_groups)
         for label in all_labels:
@@ -451,6 +461,8 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
         labels_without_colon.extend(profile_buttons)
         labels_without_colon.extend(aux_cb)
         labels_without_colon.extend(profile_cb)
+        labels_without_colon.extend(font_labels_without_colon)
+        labels_without_colon.extend(font_buttons)
         for label in labels_without_colon:
             current = label.text()
             label.setText(local_table[current][lang])
@@ -492,9 +504,11 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
         auxleds_label = local_table['AuxLEDs'][lang]
         common_label = local_table['Common'][lang]
         profiletab_label = local_table['Profiles'][lang]
+        fonttab_label = local_table['Font optimizing'][lang]
         self.change_tab_title(auxleds_label, 0)
         self.change_tab_title(common_label, 1)
         self.change_tab_title(profiletab_label, 2)
+        self.tabWidget.setTabText(3, fonttab_label)
         self.menuFile.setTitle(local_table['File'][lang])
         self.menuHelp.setTitle(local_table['MANUAL'][lang])
         self.actionOpen.setText(local_table['Open'][lang] + '...')
@@ -1274,7 +1288,7 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
     def set_default_common(self):
         for key in self.common_dict.keys():
             value = self.commondata.get_default_value(Mediator.change_keylist(self.common_dict[key]))
-            if key == self.CBBlade2Enabled:
+            if key in [self.CBBlade2Enabled, self.CBOneButton, self.CBPowerOnByStab]:
                 key.setChecked(value)
             else:
                 key.setValue(value)
@@ -1292,7 +1306,7 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
                 value = data
                 for path_key in path:
                     value = value[path_key]
-                if key == self.CBBlade2Enabled:
+                if key in [self.CBBlade2Enabled, self.CBOneButton, self.CBPowerOnByStab]:
                     key.setChecked(value)
                 else:
                     key.setValue(value)
@@ -2260,8 +2274,73 @@ class ProfileEditor(QtWidgets.QMainWindow, design.Ui_MainWindow):
         if folder:
             self.font_folder = folder
             self.BtnOptimize.setEnabled(True)
+            self.LblStatus.setText(local_table['Path to fonts'][self.language] + ': ' + folder)
+            self.LineFontPath.setText(folder)
+            
+    def get_folder_from_field(self):
+        """
+        gets font path from field
+        :return:
+        """
+        folder = self.LineFontPath.text()
+        if os.path.exists(folder):
+            self.font_folder= folder if os.path.isdir(folder) else os.path.split(folder)[0]
+            self.BtnOptimize.setEnabled(True)
+            self.LblStatus.setText(local_table['Path to fonts'][self.language] + ': ' + folder)
 
+    def optimize_fonts(self):
+        """
+        change all fonts bitrait in folder to 44100
+        :return:
+        """
+        path_to_converter = 'ffmpeg.exe' if os.path.exists('ffmpeg.exe') else \
+            os.path.join(self.font_folder, 'ffmpeg.exe')
+        if not os.path.exists(path_to_converter):
+            assistant.ffmpeg_missing(self.language)
+            return
+        self.optimize_list, self.failed_list = wav_convertion.optimize_fonts(self.font_folder)
+        self.current_file = 0
+        if self.optimize_list:
+            self.BtnOptimize.setEnabled(False)
+            self.BtnSelectFont.setEnabled(False)
+            self.LblStatus.setText(local_table["Optimization started"][self.language])
+            for path in self.optimize_list:
+                path = os.path.normpath(path)
+                print(path)
+                dst_base = os.path.splitext(path)[0]
+                dst_base += '_resampled'
+                dst = dst_base + '.wav'
+                if os.path.exists(dst):
+                    os.remove(dst)
+                command, args = path_to_converter, ["-i", path,  '-ac', '1', '-ar', '44100', '-sample_fmt', 's16',
+                                                    os.path.normpath(dst)]
+                process = QtCore.QProcess(self)
+                process.finished.connect(self.file_converted)
+                process.start(command, args)
+        else:
+            self.LblStatus.setText(datetime.datetime.now().strftime('%H:%M') + ': ' +
+                                   local_table['Fonts optimized'][self.language])
+        wav_convertion.rename_hum(self.font_folder)
 
+    def file_converted(self):
+        """
+        run when one of subprocesses are converted
+        :return:
+        """
+        sender = self.sender()
+        if sender.exitCode() != 0:
+            print("Fail")
+        self.current_file += 1
+        self.LblStatus.setText(local_table['Convertation...'][self.language] + "%i/%i" % (self.current_file,
+                                                                                          len(self.optimize_list)))
+        if self.current_file >= len(self.optimize_list):
+            failed_text = "\n" + local_table['Optimization failed for:'][self.language] + \
+                          ', '.join(self.failed_list) if self.failed_list else ""
+            self.LblStatus.setText(datetime.datetime.now().strftime('%H:%M') + ': ' +
+                                   local_table['Fonts optimized'][self.language] + failed_text)
+            wav_convertion.move_files(self.optimize_list)
+            self.BtnSelectFont.setEnabled(True)
+        return
 
 
 @logger.catch

@@ -10,6 +10,8 @@ defaults: Dict[str, Any] = {'Blade': {'BandNumber': 1, 'PixPerBand': 144, 'Start
                             'Blade2': {'Enabled': 1, 'BandNumber': 1, 'PixPerBand': 25, 'StartFlashFrom': 8},
                             'Volume': {'Common': 100, 'CoarseLow': 70, 'CoarseMid': 90, 'CoarseHigh': 100},
                             'PowerOffTimeout': 300,
+                            'OneButton': 0,
+                            'PowerOnByStab': 1,
                             'Motion':
                                 {'SwingSimple': {'HighW': 8, 'WPercent': 50, 'Circle': 640, 'CircleW': 6},
                                  'SwingSmooth': {'HighWSmooth': 0.1, 'WPercentSmooth': 1, 'CircleSmooth': 640,
@@ -20,7 +22,7 @@ defaults: Dict[str, Any] = {'Blade': {'BandNumber': 1, 'PixPerBand': 144, 'Start
                                           'Percent': 90},
                                  'Screw': {'Enabled': 1, 'LowW': 2.24, 'HighW': 9.95}}}
 
-main_sections_default = ['Blade', 'Blade2', 'Volume', 'PowerOffTimeout', 'Motion']
+main_sections_default = ['Blade', 'Blade2', 'Volume', 'PowerOffTimeout', 'Motion', 'OneButton', 'PowerOnByStab']
 main_sections = ['Blade', 'Blade2', 'Volume', 'DeadTime', 'Motion']
 blade_keys = ['BandNumber', 'PixPerBand', 'StartFlashFrom']
 volume_keys = ['Common', 'CoarseLow', 'CoarseMid', 'CoarseHigh']
@@ -43,7 +45,7 @@ class CommonData:
         self.data = {'Blade': {'BandNumber': 1, 'PixPerBand': 144, 'StartFlashFrom': 15},
                      'Blade2': {'Enabled': 1, 'BandNumber': 1, 'PixPerBand': 12, 'StartFlashFrom': 8},
                      'Volume': {'Common': 100, 'CoarseLow': 70, 'CoarseMid': 90, 'CoarseHigh': 100},
-                     'PowerOffTimeout': 300,
+                     'PowerOffTimeout': 300, 'OneButton': 0, 'PowerOnByStab': 1,
                      'Motion':
                          {'SwingSimple': {'HighW': 8, 'WPercent': 50, 'Circle': 640, 'CircleW': 6},
                           'SwingSmooth': {'HighWSmooth': 0.1, 'WPercentSmooth': 1, 'CircleSmooth': 640,
@@ -168,6 +170,10 @@ class CommonData:
             w, new_data = self.check_section(new_data, checker.check_volume, 'Volume', True, defaults)
             warning += w
             w, new_data = self.check_section(new_data, checker.check_top_number, 'PowerOffTimeout', True, defaults)
+            warning += w
+            w, new_data = self.check_section(new_data, checker.check_top_bool_number, "OneButton", True, defaults)
+            warning += w
+            w, new_data = self.check_section(new_data, checker.check_top_bool_number, "PowerOnByStab", True, defaults)
             warning += w
             motion: str = checker.get_key(new_data, 'Motion')
             w, wrong_keys = checker.motion_check_keys(new_data[motion])

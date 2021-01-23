@@ -19,7 +19,7 @@ smooth_key = "Smooth"
 wait_key = "Wait"
 
 # commondata
-main_sections_default = ['Blade', 'Blade2', 'Volume', 'PowerOffTimeout', 'Motion']
+main_sections_default = ['Blade', 'Blade2', 'Volume', 'PowerOffTimeout', 'Motion', 'OneButton', 'PowerOnByStab']
 main_sections = ['Blade', 'Blade2', 'Volume', 'General']
 blade_keys = ['BandNumber', 'PixPerBand', 'StartFlashFrom']
 volume_keys = ['Common', 'CoarseLow', 'CoarseMid', 'CoarseHigh']
@@ -30,7 +30,7 @@ spin_keys = ['Enabled', 'Counter', 'W', 'Circle', 'WLow']
 clash_keys = ['HighA', 'Length', 'HitLevel', 'LowW']
 stab_keys = ['Enabled', 'HighA', 'LowW', 'HitLevel', 'Length', 'Percent']
 screw_keys = ['Enabled', 'HighW', 'LowW']
-other_keys = ['PowerOffTimeout', 'ClashFlashDuration']
+other_keys = ['PowerOffTimeout', 'OneButton', 'PowerOnByStab']
 connection = {'Blade': blade_keys, 'Blade2': blade_keys, 'Volume': volume_keys, 'Motion': motion_keys}
 motion_connection = {'SwingSimple': swing_keys, 'SwingSmooth': swing_smooth_keys, 'Spin': spin_keys,
                      'Clash': clash_keys, 'Stab': stab_keys, 'Screw': screw_keys}

@@ -17,6 +17,25 @@ about_text = """Settings Editor 2.0 for lightsabers.
 By Warsabers.com"""
 
 
+ffmpeg_text_rus = """Пожалуйста, скачайте сперва файл ffmpeg.exe с нашего сайта. 
+Данный файл необходимо поместить в ту же директорию,
+где находится SettingsEditor. Запускать файл не нужно. 
+Он используется программой автоматически для успешной оптимизации. 
+Скачать его можно по ссылке: """
+
+ffmpeg_text_en = """Please first download ffmpeg.exe converter file 
+and put it in same folder with SettingsEditor. 
+No need to execute it. This file required for successful optimizing. 
+File can be downloaded from our site:  
+"""
+
+ffmpeg_text_jp = """
+請首先下載ffmpeg.exe轉換器文件，
+並將其與SettingsEditor放在同一文件夾中。 
+無需運行它。 成功優化需要此文件。 可以從我們的網站下載文件
+"""
+
+
 class CommonHelp(QtWidgets.QDialog, Ui_Help):
 
     def __init__(self):
@@ -165,3 +184,21 @@ def find_file(filename: str, path: str = ".") -> Optional[str]:
         if filename.lower() == file.lower():
             return file
     return None
+
+
+def ffmpeg_missing(language: str):
+    if language == 'ru':
+        error_message(ffmpeg_text_rus + 'https://warsabers.com/en/downloads/', 'ru')
+    elif language == 'jp':
+        error_message(ffmpeg_text_jp + 'https://warsabers.com/en/downloads/', 'jp')
+    else:
+        error_message(ffmpeg_text_en + 'https://warsabers.com/en/downloads/', 'en')
+
+
+def error_message(text: str, language: str):
+    error = QMessageBox()
+    error.setIcon(QMessageBox.Critical)
+    error.setText(text)
+    error.setWindowTitle(local_table['Error'][language])
+    error.setStandardButtons(QMessageBox.Ok)
+    error.exec_()

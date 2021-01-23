@@ -3,8 +3,8 @@ from typing import *
 
 
 class CommonChecker:
-    common_keys = ['blade', 'blade2', 'volume', 'powerofftimeout', 'motion']
-    common_keys_cap = ['Blade', 'Blade2', 'Volume', 'PowerOffTimeout', 'Motion']
+    common_keys = ['blade', 'blade2', 'volume', 'powerofftimeout', 'motion', 'onebutton', 'poweronbystab']
+    common_keys_cap = ['Blade', 'Blade2', 'Volume', 'PowerOffTimeout', 'Motion', 'OneButton', 'PowerOnByStab']
     motion_keys = ['swingsimple', 'spin', 'clash', 'stab', 'screw', 'swingsmooth']
     motion_keys_cap = ['SwingSmooth', 'Spin', 'Clash', 'Stab', 'Screw', 'SwingSimple', 'Spin']
     blade_keys = ['bandnumber', 'pixperband', 'startflashfrom']
@@ -121,6 +121,16 @@ class CommonChecker:
         :return: error message and empty string and lists to fit to common usage of checker functions
         """
         return check_number(data, param, 0, self.big_number), "", [], []
+
+    @staticmethod
+    def check_top_bool_number(data: dict, param: str) -> Tuple[str, str, List[str], List[str]]:
+        """
+        checks number value in top level of dict
+        :param data: dict with data
+        :param param: key for number value
+        :return: error message and empty string and lists to fit to common usage of checker functions
+        """
+        return check_number(data, param, 0, 1), "", [], []
 
     def check_smooth_swing(self, data: dict, param: str) -> Tuple[str, str, Sequence[str], Sequence[str]]:
         """
@@ -325,3 +335,21 @@ class CommonChecker:
         # screw_loww = get_value(screw, 'loww')
         # screw_highw = get_value(screw, 'highw')
         return "", warning, wrong_data_key, wrong_keys
+
+    def check_common(self, data: dict, param: str) -> Tuple[str, str, List[str], List[str]]:
+        """
+        checks if common parameter is correct
+        :param data: dict with common settings
+        :param param: parameter with key
+        :return: error message or ""
+        """
+        wrong_data_keys: List[str] = list()
+        if not isinstance(data, dict):
+            return "must contain settings formatted as {data: parameter, data: parameter ...};", "", [], []
+        err = ""
+        for key in ['onebutton', 'poweronbystab']:
+            e = check_bool(data, key)
+            if e:
+                wrong_data_keys.append(key)
+            err += e
+        return "", err, wrong_data_keys, []

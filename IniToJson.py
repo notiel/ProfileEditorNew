@@ -46,7 +46,7 @@ def prepare_text_for_json(text: str) -> str:
     text = re.sub(r'([A-Za-z0-9А-Яа-я]\w*)', r'"\1"', text)
     text = re.sub(r'"([0-9]+)"', r'\1', text)
     # remove tabulation
-    text = text.replace("\t", "")
+    text = text.replace("\t", "    ")
     # remove extra commas at },} and like this
     while re.findall(r",(\s*[\}\]])", text):
         text = re.sub(r",(\s*[\}\]])", r'\1', text)
@@ -62,7 +62,7 @@ def get_json(text: str) -> Tuple[Optional[Dict[Any, Any]], str]:
     text, missed = remove_comments(text)
     text = prepare_text_for_json(text)
     try:
-        data = json.loads(text)
+        data = json.loads(text, encoding='utf-8')
         return data, ""
     except json.decoder.JSONDecodeError:
         e = sys.exc_info()
